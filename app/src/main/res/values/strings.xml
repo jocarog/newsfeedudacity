@@ -16,4 +16,4 @@
     <string name="settings_min_articles_key" translatable="false">min_articles</string>
     <string name="settings_min_articles_default" translatable="false">50</string>
 
-    </resources>
+</resources>

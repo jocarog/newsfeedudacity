@@ -38,6 +38,7 @@ public class news {
     public String getAuthor() {
         return mAuthor;
     }
+
     //URL
     public String getUrl() {
         return mUrl;
