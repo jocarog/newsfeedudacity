@@ -139,27 +139,41 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<List<news>> onCreateLoader(int i, Bundle bundle) {
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences ( this );
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         // getString retrieves a String value from the preferences. The second parameter is the default value for this preference.
-        String minArticles = sharedPrefs.getString (
-                getString ( R.string.settings_min_articles_key ),
-                getString ( R.string.settings_min_articles_default ) );
+        String minArticles = sharedPrefs.getString(
+                getString(R.string.settings_min_articles_key),
+                getString(R.string.settings_min_articles_default));
 
+        String section = sharedPrefs.getString(
+                getString(R.string.settings_section_key),
+                getString(R.string.settings_section_default));
+
+        String searchContent = sharedPrefs.getString(
+                getString(R.string.settings_search_content_TF),
+                getString(R.string.settings_search_content_default));
+
+        String orderBy = sharedPrefs.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_default));
 
         // parse breaks apart the URI string that's passed into its parameter
-        Uri baseUri = Uri.parse ( REQUEST_URL );
+        Uri baseUri = Uri.parse(REQUEST_URL);
 
         // buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
-        Uri.Builder uriBuilder = baseUri.buildUpon ();
+        Uri.Builder uriBuilder = baseUri.buildUpon();
 
         // Append query parameter and its value. For example, the `page-size=10`
-        uriBuilder.appendQueryParameter ( PAGE_SIZE, minArticles );
-        uriBuilder.appendQueryParameter ( TAGS, AUTHOR );
-        uriBuilder.appendQueryParameter ( API_KEY, MY_API_KEY );
+        uriBuilder.appendQueryParameter(PAGE_SIZE, minArticles);
+        uriBuilder.appendQueryParameter(TAGS, AUTHOR);
+        uriBuilder.appendQueryParameter(SECTION, section);
+        uriBuilder.appendQueryParameter(QUERY, searchContent);
+        uriBuilder.appendQueryParameter(ORDER_BY, orderBy);
+        uriBuilder.appendQueryParameter(API_KEY, MY_API_KEY);
 
         // Return the completed uri
-        return new NewsAdapter.NewsLoader ( this, uriBuilder.toString () );
+        return new NewsAdapter.NewsLoader (this, uriBuilder.toString());
     }
 
     @Override
