@@ -51,7 +51,7 @@
 
     <!-- Label for section sport option -->
     <string name="settings_section_sport">Sport</string>
-    <string name="settings_section_sport_TF" translatable="false">science</string>
+    <string name="settings_section_sport_TF" translatable="false">sport</string>
 
     <!-- Strings for search content displayed preference -->
     <string name="settings_search_content">Search Content</string>
